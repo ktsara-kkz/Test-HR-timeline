@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101014">
+<title>Haunted Roots — Story Archive</title>
+<style>
+:root{
+  --bg:#0d0e12;--panel:#17181e;--panel2:#1d1e25;--gold:#d9b978;
+  --gold2:#f0dcae;--text:#f4f0e8;--muted:#aaa6a0;--line:#393630;
+  --red:#9d5550;--green:#738a79;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#34302b 0%,#17171b 35%,var(--bg) 72%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+.hero{min-height:490px;display:grid;place-items:center;text-align:center;padding:72px 18px 58px;position:relative;overflow:hidden;border-bottom:1px solid #514735}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #b99a5a30;border-radius:50%;width:520px;height:520px;pointer-events:none}
+.hero:after{width:680px;height:680px}
+.kicker{letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-size:.76rem}
+h1{font-family:Georgia,serif;font-weight:500;letter-spacing:.08em;font-size:clamp(2.5rem,8vw,5.6rem);line-height:1.05;margin:18px 0 12px;color:#f3e5c7;text-shadow:0 4px 30px #000}
+.subtitle{font-size:clamp(1rem,2.4vw,1.22rem);color:#d0c6b5;margin:0 auto;max-width:680px}
+.hero-note{margin-top:28px;color:var(--muted);font-size:.9rem}
+.hero-line{width:84px;height:1px;background:var(--gold);margin:25px auto}
+nav{position:sticky;top:0;z-index:10;background:#101014eF;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff14}
+.navinner{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:12px 0}
+.navinner a{font-size:.86rem;color:#d8d0c2;padding:7px 13px;border:1px solid transparent;border-radius:30px}
+.navinner a:hover{border-color:#9c8557;color:var(--gold2)}
+section{padding:56px 0}
+.section-head{text-align:center;margin-bottom:30px}
+.eyebrow{font-size:.72rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(1.8rem,4vw,2.65rem);margin:7px 0;color:#f0dfbd}
+.intro{color:var(--muted);max-width:720px;margin:0 auto}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin:25px 0}
+.search{flex:1;min-width:220px;background:#191a20;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--text);font:inherit;outline:none}
+.search:focus{border-color:var(--gold)}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{border:1px solid var(--line);background:#17181e;color:#c8c1b6;border-radius:30px;padding:8px 13px;cursor:pointer;font:inherit;font-size:.82rem}
+.filter.active,.filter:hover{background:#4a3d29;border-color:var(--gold);color:#ffe8b7}
+.timeline{position:relative;max-width:900px;margin:0 auto}
+.timeline:before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--gold),#64543a,#39332a)}
+.item{position:relative;padding:0 0 22px 58px}
+.dot{position:absolute;left:11px;top:21px;width:17px;height:17px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);box-shadow:0 0 0 5px #d9b97812}
+.card{background:linear-gradient(145deg,#1d1e24,#15161b);border:1px solid #ffffff12;border-radius:15px;padding:20px 22px;transition:.2s}
+.card:hover{border-color:#b99a5a80;transform:translateY(-2px)}
+.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--gold);font-size:.78rem;letter-spacing:.06em}
+.tag{border:1px solid #a78d5a66;border-radius:30px;padding:3px 9px;color:#d6c39d;font-size:.72rem}
+.card h3{font-size:1.15rem;margin:8px 0 5px;color:#f4e7cf;font-weight:650}
+.desc{color:#bcb7ae;margin:0 0 13px;font-size:.93rem}
+.links{display:flex;gap:9px;flex-wrap:wrap}
+.watch{display:inline-flex;align-items:center;gap:7px;background:#3b3225;color:#f4dfb5;border:1px solid #8d7448;border-radius:8px;padding:8px 12px;font-size:.84rem}
+.watch:hover{background:#57452d}
+.watch.fb{background:#252c35;border-color:#586778;color:#d6e3ef}
+.empty{display:none;text-align:center;padding:30px;color:var(--muted)}
+.notice{max-width:900px;margin:24px auto 0;border-left:3px solid var(--gold);padding:12px 16px;background:#d9b9780d;color:#c8c0b4;font-size:.86rem}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feature{background:var(--panel);border:1px solid #ffffff12;border-radius:13px;padding:20px}
+.feature .num{font-family:Georgia,serif;color:var(--gold);font-size:1.7rem}
+.feature h3{margin:6px 0;color:#e8d8b8;font-size:1rem}
+.feature p{margin:0;color:var(--muted);font-size:.88rem}
+.footer{border-top:1px solid var(--line);padding:30px 0 45px;text-align:center;color:#89857e;font-size:.82rem}
+.footer strong{display:block;color:var(--gold);font-family:Georgia,serif;letter-spacing:.18em;font-size:1rem;margin-bottom:6px}
+@media(max-width:700px){
+ .hero{min-height:410px;padding:60px 16px}
+ section{padding:42px 0}
+ .feature-grid{grid-template-columns:1fr}
+ .card{padding:17px}
+ .toolbar{align-items:stretch}
+ .filters{justify-content:flex-start}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div>
+    <div class="kicker">The Haunted Roots Universe</div>
+    <h1>STORY ARCHIVE</h1>
+    <div class="hero-line"></div>
+    <p class="subtitle">คลังเรื่องราวและลำดับเหตุการณ์ของเหล่าผีสาว Haunted Roots<br>จากอดีต สู่การรวมตัว และการผจญภัยในโลกวิญญาณ</p>
+    <p class="hero-note">A JOURNEY THROUGH TIME • A WORLD BEYOND THE LIVING</p>
+  </div>
+</header>
+<nav>
+  <div class="wrap navinner">
+    <a href="#timeline">Story Timeline</a>
+    <a href="#chapters">Story Chapters</a>
+    <a href="#about">About Archive</a>
+  </div>
+</nav>
+<main class="wrap">
+<section id="timeline">
+  <div class="section-head">
+    <div class="eyebrow">Follow the stories</div>
+    <h2>Story Timeline</h2>
+    <p class="intro">เลือกชมเรื่องราวตามลำดับเหตุการณ์ หรือค้นหาชื่อตัวละครและชื่อคลิปที่สนใจ</p>
+  </div>
+  <div class="toolbar">
+    <input id="search" class="search" type="search" placeholder="ค้นหา เช่น ชฎา, พราย, The Demon Parade..." aria-label="ค้นหาเรื่องราว">
+    <div class="filters" aria-label="ตัวกรองหมวดหมู่">
+      <button class="filter active" data-filter="all">ทั้งหมด</button>
+      <button class="filter" data-filter="origin">Back Story</button>
+      <button class="filter" data-filter="encounter">การพบพาน</button>
+      <button class="filter" data-filter="reunion">การรวมตัว</button>
+      <button class="filter" data-filter="era">โลกมนุษย์และกิจกรรม</button>
+      <button class="filter" data-filter="war">สงคราม</button>
+    </div>
+  </div>
+
+  <div class="timeline" id="timelineList">
+    <article class="item" data-category="origin" data-search="ชฎา chada back story อยุธยา 2310">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>พ.ศ. 2310</span><span class="tag">BACK STORY</span></div>
+        <h3>ชฎา — Back Story</h3><p class="desc">เรื่องราวในช่วงเสียกรุงศรีอยุธยาครั้งที่ 2</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=pAGrkNfXPuM&t=959s" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="origin" data-search="ตานี tani back story โรคห่า 2363">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>พ.ศ. 2363</span><span class="tag">BACK STORY</span></div>
+        <h3>ตานี — Back Story</h3><p class="desc">เรื่องราวในช่วงโรคห่าระบาด</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=12uk0ni0PSo" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="origin" data-search="ตะเคียน takhian back story ศักดิ์ พรบตัดไม้ 2456">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>พ.ศ. 2456</span><span class="tag">BACK STORY</span></div>
+        <h3>ตะเคียน — Back Story</h3><p class="desc">เรื่องราวการพบกับศักดิ์ ในช่วงเหตุการณ์เกี่ยวกับ พ.ร.บ. ตัดไม้</p>
+        <div class="links"><a class="watch" href="https://youtu.be/mFEw1c_7yyI?si=VxqdwPAHGTz9DDvQ" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="origin" data-search="พราย phrai back story ลอยกระทง 2460">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>พ.ศ. 2460</span><span class="tag">BACK STORY</span></div>
+        <h3>พราย — Back Story</h3><p class="desc">เรื่องราวในช่วงวันลอยกระทง</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=EynQqto7WjQ&t=17s" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="encounter" data-search="my ghost my goblin หมอผีตานี เกาหลี">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>เหตุการณ์ไม่ระบุปี</span><span class="tag">THE ENCOUNTERS</span></div>
+        <h3>My Ghost My Goblin</h3><p class="desc">ช่วงหมอผีตานีหนีไปเกาหลี</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=RAi4PvLe8HY" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="reunion" data-search="the ghost reunion haunted roots ก่อตั้ง รวมสมาชิก">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>การรวมตัว</span><span class="tag">THE REUNION</span></div>
+        <h3>The Ghost Reunion — Haunted Roots</h3><p class="desc">เรื่องราวการก่อตั้งและการรวมสมาชิก Haunted Roots</p>
+        <div class="links">
+          <a class="watch" href="https://www.youtube.com/watch?v=1ZCuRIf0_hE" target="_blank" rel="noopener">▶ ตอนที่ 1</a>
+          <a class="watch" href="https://www.youtube.com/watch?v=T3kVuF9aKHY" target="_blank" rel="noopener">▶ ตอนที่ 2</a>
+        </div>
+      </div>
+    </article>
+    <article class="item" data-category="reunion" data-search="the last trial haunted roots พญายมราช ภารกิจ">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>ภารกิจจากยมโลก</span><span class="tag">THE TRIAL</span></div>
+        <h3>The Last Trial — Haunted Roots</h3><p class="desc">ภารกิจที่ได้รับมอบหมายจากพญายมราช</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=2t6Uz5d-4e0" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="encounter" data-search="ความรักจากสายน้ำ พราย ไม้">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>เรื่องราวความผูกพัน</span><span class="tag">THE ENCOUNTERS</span></div>
+        <h3>ความรักจากสายน้ำ — พราย Haunted Roots</h3><p class="desc">เรื่องราวเมื่อพรายได้พบกับไม้</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=gAra0KlHDh4" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="era" data-search="คอนเสิร์ตใหญ่ haunted roots อเวจี">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>กิจกรรมในโลกวิญญาณ</span><span class="tag">SPECIAL EVENT</span></div>
+        <h3>คอนเสิร์ตใหญ่ Haunted Roots ที่อเวจี</h3><p class="desc">บันทึกการแสดงคอนเสิร์ตครั้งใหญ่ ณ อเวจี</p>
+        <div class="links">
+          <a class="watch fb" href="https://www.facebook.com/reel/1076417985262703" target="_blank" rel="noopener">▶ Facebook Reel</a>
+          <a class="watch" href="https://www.youtube.com/watch?v=iXFUOoknXgI" target="_blank" rel="noopener">▶ YouTube</a>
+        </div>
+      </div>
+    </article>
+    <article class="item" data-category="encounter" data-search="พราย ไปเที่ยวญี่ปุ่น japan">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>ท่องโลก</span><span class="tag">THE ENCOUNTERS</span></div>
+        <h3>พรายไปเที่ยวญี่ปุ่น</h3><p class="desc">การเดินทางของพรายในประเทศญี่ปุ่น</p>
+        <div class="links">
+          <a class="watch fb" href="https://www.facebook.com/reel/1050836214025684" target="_blank" rel="noopener">▶ คลิปที่ 1 · Facebook</a>
+          <a class="watch fb" href="https://www.facebook.com/reel/1393840418933921" target="_blank" rel="noopener">▶ คลิปที่ 2 · Facebook</a>
+        </div>
+      </div>
+    </article>
+    <article class="item" data-category="encounter" data-search="ซาดาโกะ sadako เที่ยวไทย">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>การมาเยือนประเทศไทย</span><span class="tag">THE ENCOUNTERS</span></div>
+        <h3>ซาดาโกะมาเที่ยวไทย</h3><p class="desc">เมื่อซาดาโกะเดินทางมาเยือนประเทศไทย</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=24B2BdH-DJI&t=157s" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="encounter" data-search="แม่นาค sadako ลูกบุญธรรม">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>ความสัมพันธ์ของตัวละคร</span><span class="tag">THE ENCOUNTERS</span></div>
+        <h3>แม่นาค — รับซาดาโกะเป็นลูกบุญธรรม</h3><p class="desc">เรื่องราวความสัมพันธ์ระหว่างแม่นาคและซาดาโกะ</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=KDtBAyzBv-g" target="_blank" rel="noopener">▶ รับชมบน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="era" data-search="หลอกหลอน haunted roots 4 พฤษภาคม 2569 โลกมนุษย์ mv ซาดาโกะ">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>4 พฤษภาคม 2569</span><span class="tag">A NEW ERA</span></div>
+        <h3>หลอกหลอน — Haunted Roots</h3><p class="desc">จุดเริ่มต้นของการเข้าสู่โลกมนุษย์ และ MV แรกที่สามารถอัปโหลดจากโลกวิญญาณได้ด้วยพลังของซาดาโกะ</p>
+        <div class="links"><a class="watch" href="https://www.youtube.com/watch?v=6mKOQ4ME4VQ" target="_blank" rel="noopener">▶ รับชม MV บน YouTube</a></div>
+      </div>
+    </article>
+    <article class="item" data-category="war" data-search="the demon parade สงคราม ไทย ญี่ปุ่น โลกวิญญาณ part 1 part 2 part 3">
+      <span class="dot"></span><div class="card">
+        <div class="meta"><span>สงครามในโลกวิญญาณ</span><span class="tag">THE GREAT WAR</span></div>
+        <h3>THE DEMON PARADE</h3><p class="desc">สงครามระหว่างไทยและญี่ปุ่นในโลกวิญญาณ</p>
+        <div class="links">
+          <a class="watch" href="https://www.youtube.com/watch?v=ozoCvchwafw&t=815s" target="_blank" rel="noopener">▶ รับชมพาร์ท 1</a>
+          <a class="watch" href="https://www.youtube.com/watch?v=o8ULt3QBFQ8&t=845s" target="_blank" rel="noopener">▶ รับชมพาร์ท 2</a>
+          <span class="watch" style="background:#292321;border-color:#79514b;color:#e5b8ad">พาร์ท 3 — รอติดตาม</span>
+        </div>
+      </div>
+    </article>
+  </div>
+  <p class="empty" id="empty">ไม่พบเรื่องราวที่ค้นหา ลองใช้คำค้นอื่น</p>
+  <div class="notice">หมายเหตุ: ปี พ.ศ. แสดงเฉพาะเหตุการณ์ที่มีการระบุไว้ ส่วนเรื่องที่ยังไม่ระบุปีจัดเรียงตามหมวดเนื้อหา ไม่ได้ยืนยันว่าเป็นลำดับเวลาอย่างเป็นทางการ</div>
+</section>
+
+<section id="chapters">
+  <div class="section-head">
+    <div class="eyebrow">Explore the universe</div>
+    <h2>Story Chapters</h2>
+    <p class="intro">เส้นทางการรับชมสำหรับแฟน ๆ ที่เพิ่งเข้ามาทำความรู้จักกับ Haunted Roots</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature"><div class="num">01</div><h3>The Origin</h3><p>ย้อนกลับไปทำความรู้จักอดีตและจุดกำเนิดของชฎา ตานี ตะเคียน และพราย</p></div>
+    <div class="feature"><div class="num">02</div><h3>The Encounters</h3><p>เรื่องราวการพบพาน ความสัมพันธ์ และการเดินทางของเหล่าตัวละคร</p></div>
+    <div class="feature"><div class="num">03</div><h3>The Reunion</h3><p>การรวมตัว ก่อตั้งทีม และภารกิจจากพญายมราช</p></div>
+    <div class="feature"><div class="num">04</div><h3>The New Era</h3><p>การก้าวออกจากโลกวิญญาณสู่โลกมนุษย์และกิจกรรมต่าง ๆ</p></div>
+    <div class="feature"><div class="num">05</div><h3>The Great War</h3><p>มหาสงครามระหว่างไทยและญี่ปุ่นในโลกวิญญาณ</p></div>
+    <div class="feature"><div class="num">∞</div><h3>More Stories</h3><p>จักรวาล Haunted Roots ยังมีเรื่องราวใหม่ ๆ รอให้ติดตาม</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head">
+    <div class="eyebrow">Welcome to our world</div>
+    <h2>เริ่มต้นการเดินทางของคุณ</h2>
+    <p class="intro">ไม่ว่าคุณจะเพิ่งรู้จัก Haunted Roots หรืออยู่ด้วยกันมาตั้งแต่ต้น<br>ขอให้สนุกกับการย้อนชมทุกเรื่องราวในจักรวาลนี้</p>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap"><strong>HAUNTED ROOTS</strong>THE STORY CONTINUES…<br><span>Unofficial fan viewing guide • Links lead to original videos</span></div>
+</footer>
+<script>
+const search=document.getElementById('search');
+const cards=[...document.querySelectorAll('.item')];
+const filters=[...document.querySelectorAll('.filter')];
+const empty=document.getElementById('empty');
+let active='all';
+function update(){
+ const q=search.value.trim().toLowerCase();let shown=0;
+ cards.forEach(card=>{
+  const matchesCategory=active==='all'||card.dataset.category===active;
+  const matchesText=!q||(card.dataset.search+' '+card.innerText).toLowerCase().includes(q);
+  const visible=matchesCategory&&matchesText;
+  card.style.display=visible?'':'none';if(visible)shown++;
+ });
+ empty.style.display=shown?'none':'block';
+}
+filters.forEach(btn=>btn.addEventListener('click',()=>{
+ filters.forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');active=btn.dataset.filter;update();
+}));
+search.addEventListener('input',update);
+</script>
+</body>
+</html>
